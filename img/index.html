@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Webmap</title>
+    
+    <link rel="stylesheet" href="src/leaflet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="src/css/bootstrap.css">-->
+<!--    <link rel="stylesheet" href="src/css/bootstrap-theme.css">-->
+<!--    <link rel="stylesheet" href="src/fonts/glyphicons-halflings-regular.eot">-->
+    
+    <!-- link panzoom plugin -->
+    <link rel="stylesheet" href="src/plugins/L.Control.Pan.css">
+    
+    <!-- link zoomslider -->
+    <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css">
+    
+    <!-- link mouse position -->
+    <link rel="stylesheet" href="src/plugins/L.Control.MousePosition.css">
+    
+    <!-- link ployline -->
+    <link rel="stylesheet" href="src/plugins/Leaflet.PolylineMeasure.css">
+    
+    <!-- link easybutton -->
+    <link rel="stylesheet" href="src/plugins/easy-button.css">
+    
+    <!-- link sidebar -->
+    <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
+    
+    <!-- link open-search -->
+    <link rel="stylesheet" href="src/plugins/opencage-search/src/css/L.Control.OpenCageSearch.css">
+    
+    <!-- link sidebar -->
+    <link rel="stylesheet" href="src/plugins/leaflet-providers/css/gh-fork-ribbon.css">
+    
+    <!-- link draw -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+       
+    
+    <!-- link style editor -->
+    <link rel="stylesheet" href="src/plugins/leaflet-StyleEditor/dist/css/Leaflet.StyleEditor.css">
+    
+    <!-- link Awesomefont -->
+    <link rel="stylesheet" href="src/plugins/fontawesome/css/fontawesome.min.css">
+    
+    <!-- link leaflet Awesomemarker -->
+    <link rel="stylesheet" href="src/plugins/leaflet-awesome-markers/dist/leaflet.awesome-markers.css">
+    
+     <!-- link leaflet Awesomemarker -->
+    <link rel="stylesheet" href="src/plugins/BeautifyMarker/leaflet-beautify-marker-icon.css">
+    
+    <!-- link leaflet MapKey Icon -->
+    <link rel="stylesheet" href="src/plugins/leaflet-mapkey/dist/MapkeyIcons.css">
+    <link rel="stylesheet" href="src/plugins/leaflet-mapkey/dist/L.Icon.Mapkey.css">
+    
+    <!-- link leaflet Marker Cluster -->
+    <link rel="stylesheet" href="src/plugins/leaflet-markercluster/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="src/plugins/leaflet-markercluster/dist/MarkerCluster.Default.css">
+    
+    
+    
+    
+    
+    <script src="src/leaflet-src.js"></script>
+    <script src="src/jquery-3.5.0.min.js"></script>
+   
+    
+    <!-- readin Panzoom js -->
+    <script src="src/plugins/L.Control.Pan.js" ></script>
+    
+    <!-- readin zoomslider -->
+    <script src="src/plugins/L.Control.Zoomslider.js"></script>
+    
+    <!-- readin mouseposition -->
+    <script src="src/plugins/L.Control.MousePosition.js"></script>
+    
+    <!-- readin polyline -->
+    <script src="src/plugins/Leaflet.PolylineMeasure.js"></script>
+    
+    <!-- readin easybutton -->
+    <script src="src/plugins/easy-button.js"></script>
+    
+    <!-- readin sidebar -->
+    <script src="src/plugins/L.Control.Sidebar.js"></script>
+    
+    <!-- readin providers -->
+    <script src="src/plugins/leaflet-providers/leaflet-providers.js"></script>
+    
+    <!-- readin open-search -->
+    <script src="src/plugins/opencage-search/src/js/L.Control.OpenCageSearch.js"></script>
+    
+    <!-- readin style editor -->
+    <script src="src/plugins/leaflet-StyleEditor/dist/javascript/Leaflet.StyleEditor.js"></script>
+<!--    <script src="src/plugins/leaflet-StyleEditor/src/javascript/StyleForm.js"></script>-->
+   
+   <!-- Ajax -->
+   <script src="src/plugins/leaflet-ajax/dist/leaflet.ajax.min.js"></script>
+    
+    <!-- Sprite -->
+   <script src="src/plugins/leaflet-sprite/dist/leaflet.sprite.js"></script>
+    
+    <!-- Leaflet awesome markers -->
+   <script src="src/plugins/leaflet-awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
+   
+   <!-- Leaflet BeautifyMarker -->
+   <script src="src/plugins/BeautifyMarker/leaflet-beautify-marker-icon.js"></script>
+   
+   <!-- Leaflet MapKey Icon -->
+   <script src="src/plugins/leaflet-mapkey/dist/L.Icon.Mapkey.js"></script>
+   
+   <!-- Leaflet Marker Cluster -->
+   <script src="src/plugins/leaflet-markercluster/dist/leaflet.markercluster.js"></script>
+    
+    
+    
+    <!--    ***************  Begin Leaflet.Draw-->
+       
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+        
+<!--
+    <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
+    <script src="src/plugins/leaflet-draw/Leaflet.Draw.Event.js"></script>
+    <link rel="stylesheet" href="src/plugins/leaflet-draw/leaflet.draw.css"/>
+
+    <script src="src/plugins/leaflet-draw/Toolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/Tooltip.js"></script>
+
+    <script src="src/plugins/leaflet-draw/ext/GeometryUtil.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/LatLngUtil.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/LineUtil.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/Polygon.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/Polyline.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/TouchEvents.js"></script>
+
+    <script src="src/plugins/leaflet-draw/draw/DrawToolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Feature.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Circle.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Marker.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js"></script>
+
+
+    <script src="src/plugins/leaflet-draw/edit/EditToolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js"></script>
+
+    <script src="src/plugins/leaflet-draw/Control.Draw.js"></script>
+
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Poly.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Circle.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Marker.js"></script>
+-->
+
+<!--    **************  End of Lealet Draw-->
+
+    
+    
+    <!-- stayle the div -->
+    <style>
+        #mapdiv {
+            height: 100vh;
+            float:right;
+        }
+        
+/*
+        #cltSidebar {
+            width:900px !important;
+        }
+*/
+    </style>
+    
+</head>
+
+<body>
+ 
+    
+   
+    
+    <div id="side-bar" class="col-md-3">
+        <button id="btn-locate" class="btn btn-primary btn-block">Locate</button>
+        <button id="btn-zotoKrt" class="btn btn-primary btn-block">ZoomToKRT</button>
+        
+<!--        <button id="btn-zotoJA" class="btn btn-primary btn-block">Zoom To Jabel Awlyia</button>-->
+<!--
+        <button id="btn-rout" class="btn btn-primary btn-block">Zoom To Rout</button>
+        <button id="btn-addJA" class="btn btn-primary btn-block">Add JA to Fgroup</button>
+        <button id="btn-changeColor" class="btn btn-primary btn-block">Change Color</button>
+        <h4> Zoom Level: <span id='zoom-level'></span></h4>
+        <h4> Map Center: <span id='map-center'></span></h4>
+        <h4> Mouse Location: <span id='mouse-location'></span></h4>
+        <h4>Image Opacity: <span id='image-opacity'></span></h4>
+        <input type="range" id='sldOpacity'  min='0' max='1' step='0.1' value='0.5'>
+-->
+        
+    </div>
+      
+    <div id="mapdiv" class="col-md-12"></div>
+    
+   
+   
+<!--
+       <script>
+
+            var getJSON = function(url, callback) {
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'json';
+
+                xhr.onload = function() {
+
+                    var status = xhr.status;
+
+                    if (status == 200) {
+                        callback(null, xhr.response);
+                    } else {
+                        callback(status);
+                    }
+                };
+
+                xhr.send();
+            };
+
+            getJSON('http://sudancovid19.rf.gd/api/v1/statistics?i=1',  function(err, data) {
+
+                if (err != null) {
+                    console.error(err);
+                } else {
+
+                    var text = 'Date: ${data.confirmed}'
+//                    Time: ${data.time}
+//                    Unix time: ${data.milliseconds_since_epoch}`
+
+                    $('#conf').html(console.log(text));
+                }
+            });
+
+        </script>
+   
+   
+-->
+   
+    <script>
+        var mymap;
+        var lyrOSM;
+        var lyrWatercolor;
+        var lyrTopo;
+        var lyrImagery;
+        var lyrOutdoors;
+        var lyrMarkerCluster;
+        var lyrClientLines;
+        var lyrBUOWL;
+        var lyrGBH;
+        
+        var markCurrent;
+        var popKRT;
+        var cltZoom;
+        var cltAttr;
+        var cltScale;
+        var cltPan;
+        var cltSld;
+        var cltMousePos;
+        var cltMeasure;
+        var cltEasyButton;
+        var cltSidebar;
+        var cltOpenSearch;
+        var cltLyaers;
+        var objBasemaps;
+        var objOverlays;
+        var mrkJA;
+        var lyrKRT;
+        var pln;
+        var plg;
+        var fgpKRT;
+        var fgpDrawnItems;
+        var cltDraw;
+        var cltStyle;
+       // var popEx;
+        
+        var lyrEagleNests;
+        var lyrRaptorNests;
+        
+        var iconRedSprite;
+        var iconVioletSprite;
+        
+        var iconLMtree;
+        var iconLMbird;
+        var iconBM;
+        var iconMKtree;
+        var iconMKbird;
+        var icnEagleActive;
+        var icnEagleInactive;
+        var coronaSDN;
+        
+        $(document).ready(function(){
+            
+            // Corona SDN
+            
+//            coronaSDN = L.geoJSON.ajax('http://sudancovid19.rf.gd/api/v1/statistics?i=1');
+//            var att = coronaSDN.properties; 
+//            $('#conf').html(att.confirmed[0]);
+            
+    
+            
+            iconRedSprite = L.spriteIcon('red');
+            iconVioletSprite = L.spriteIcon('violet');
+            
+            
+            iconLMtree = L.AwesomeMarkers.icon({icon:'tree-conifer',markerColor:'lightgreen', iconColor:'darkgreen',spin:true});
+            iconLMbird = L.AwesomeMarkers.icon({icon:'home',markerColor:'lightblue',iconColor:'blue',prefix:'glyphicon',spin:true})
+            
+            iconBM = L.BeautifyIcon.icon({icon:'leaf',iconShape:'marker',prefix:'glyphicon',spin:true});
+            
+            iconMKbird = L.icon.mapkey({icon:'school',color:'red',background:'lightred',size:30});
+            
+            
+            // Make you own icon
+            icnEagleActive = L.icon({iconUrl:'img/nest.png',iconSize:[40,40],iconAnchor:[20,24]});
+            
+            icnEagleInactive = L.icon({iconUrl:'img/nest2.png',iconSize:[40,40],iconAnchor:[20,24]});
+            
+            mymap = L.map('mapdiv', {center:[19.4, -99.2],zoom:13,zoomControl:true
+                                    , attributionControl:false, drawControl: true});
+                                //    zoomControl:true, 
+                                //    dragging:true,
+                                //    minZoom:10,
+                                //    maxZoom:14});
+//            lyrOSM = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+//            mymap.addLayer(lyrOSM); 
+            
+            // add Stamen Watercolor to map.
+            lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+            lyrWatercolor = L.tileLayer.provider('Stamen.Watercolor');
+            lyrOutdoors = L.tileLayer.provider('Thunderforest.Outdoors');
+            lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
+            lyrTopo = L.tileLayer.provider('OpenTopoMap');
+            
+            mymap.addLayer(lyrOSM);
+            
+            lyrKRT = L.imageOverlay('img/krt.jpg', [[15.31962,32.2411],[15.0761,32.7293]], {opacity:0.5});
+            
+//            pln = L.polyline([[15.23617, 32.50787],[15.28618, 32.53788],[15.29619, 32.55789]],{color:'red'});
+//            
+//            plg = L.polygon([[15.23617, 32.50787],[15.28618, 32.53788],[15.29619, 32.55789],[15.23617, 32.50787]],{color:'red'});
+            
+            
+//            fgpKRT = L.featureGroup([pln,plg]).addTo(mymap);
+            fgpDrawnItems = new L.featureGroup();
+            fgpDrawnItems.addTo(mymap);
+            
+            
+            // read in geojson:
+            
+            lyrEagleNests = L.geoJSON.ajax('data/wildlife_eagle.geojson', {pointToLayer:returnEagleMarker}).addTo(mymap);
+            lyrEagleNests.on('data:loaded', function(){
+               mymap.fitBounds(lyrEagleNests.getBounds()); 
+            });
+            
+            lyrMarkerCluster = L.markerClusterGroup();
+            
+            lyrRaptorNests = L.geoJSON.ajax('data/wildlife_raptor.geojson', {pointToLayer:returnRaptorMarker});
+            lyrRaptorNests.on('data:loaded', function(){
+                lyrMarkerCluster.addLayer(lyrRaptorNests);
+                lyrMarkerCluster.addTo(mymap);
+            });
+            
+            lyrClientLines = L.geoJSON.ajax('data/client_lines.geojson', {
+                style:styleClientLinears, onEachFeature:processClientLinears
+            }).addTo(mymap);
+            
+            lyrBUOWL = L.geoJSON.ajax('data/wildlife_buowl.geojson', {style:styleBUOWL, onEachFeature:processBUOWL,filter:filterBUOWL}).addTo(mymap);
+            
+            lyrGBH = L.geoJSON.ajax('data/wildlife_gbh.geojson', {color:'fuchsia'}).bindTooltip("<h4>GBH Nesting Area</h4>").addTo(mymap);
+            
+            objBasemaps = {
+              "Open Street Map":lyrOSM,
+                "Topo Map": lyrTopo,
+                "Imagery": lyrImagery,
+                "Outdoors Map": lyrOutdoors,
+                "Water Color Map": lyrWatercolor
+            };
+            
+            objOverlays = {
+//                "Overlay Image":lyrKRT,
+//               "FGB KRT":fgpKRT,
+                "Drawn Layers":fgpDrawnItems,
+                "Eagle Nests":lyrEagleNests,
+                "Eagle Raptor":lyrMarkerCluster,
+                "Client Liners":lyrClientLines,
+                "Burrowing Owl Habitat":lyrBUOWL,
+                "GBH Rookeries":lyrGBH
+                
+                
+            };
+            
+            cltLyaers = L.control.layers(objBasemaps,objOverlays).addTo(mymap);
+            
+            
+            
+             
+        
+//            cltSld = L.control.zoomslider().addTo(mymap);
+//            cltSld.removeFrom(mymap);
+            
+            //cltZoom = L.control.zoom({zoomInText:"In", zoomOutText:"Out", position:'topright'});
+            //cltZoom.addTo(mymap);
+            
+            cltAttr = L.control.attribution({position:'bottomleft'}).addTo(mymap);
+            cltAttr.addAttribution('OSM');
+            cltAttr.addAttribution('&copy; <a href="http://google.com">Google</a>');
+            
+            cltScale = L.control.scale({position:'bottomright',metric:false, maxWidth:200}).addTo(mymap);
+            
+//            cltPan = L.control.pan({position:'topright'}).addTo(mymap);
+            
+            
+            
+//            cltMousePos = L.control.mousePosition({position:'bottomright'}).addTo(mymap);
+            
+//            cltMeasure = L.control.polylineMeasure().addTo(mymap);
+            
+            cltSidebar = L.control.sidebar('side-bar').addTo(mymap);
+            
+            cltEasyButton = L.easyButton('glyphicon-transfer', function() {
+              cltSidebar.toggle(); 
+           }).addTo(mymap);
+            
+//            var options = {
+//            key: 'f632d51d59dd467e8f4e2fde57e658b1', // your OpenCage API key
+//            limit: 5 // number of results to be displayed
+//            position: 'topright',
+//            placeholder: 'Search...', // the text in the empty search box
+//            errorMessage: 'Nothing found.',
+//            showResultIcons: false,
+//            collapsed: true,
+//            expand: 'click',
+//            addResultToMap: true, // if a map marker should be added after the user clicks a result
+//            onResultClick: undefined // callback with result as first parameter
+//        };  
+            
+
+//            cltOpenSearch = L.Control.openCageSearch({key:'f632d51d59dd467e8f4e2fde57e658b1',limit:10}).addTo(mymap);
+//            
+            
+            cltStyle = L.control.styleEditor({position:'topright'});
+            mymap.addControl(cltStyle);
+            
+            
+            cltDraw = new L.Control.Draw({
+                draw:{
+                    cirlce:false
+                },
+                edit:{
+                    featureGroup:fgpDrawnItems
+                }
+            });
+//            cltDraw.addTo(mymap);
+            mymap.addControl(cltDraw);
+            
+            mymap.on('draw:created', function(e){
+               console.log(e);
+                fgpDrawnItems.addLayer(e.layer);
+            });
+            
+        
+            
+//    
+//            mrkJA = L.marker([15.23616, 32.50786],{draggable:true}).addTo(mymap);
+//            mrkJA.bindTooltip("Jabel Awlyia");
+            
+            popKRT = L.popup({maxWidth:200, keepInView:false});
+            popKRT.setLatLng([15.5007, 32.5599]);
+            popKRT.setContent("<h2>Khartoum</h2><img src='img/logo.png' width='200px'></img>");
+            
+     //       popEx = L.popup();
+    //        popEx.setLatLng([15.5008, 32.5598]);
+      //      popEx.setContent($('#side-bar')[0]);
+    //        popEx.openOn(mymap);
+            
+            
+ //           setInterval(function(){
+   //             mymap.locate();
+     //       },5000);
+                         
+//            mymap.on('click', function(e){
+//                if (e.originalEvent.shiftKey){
+//                    alert(mymap.getZoom());
+//                } else {
+//                    alert(e.latlng.toString());
+//                }
+//            });
+//            var dtCurrentTime = new Date()
+//            mymap.on("contextmenu", function(e){
+//                L.marker(e.latlng).addTo(mymap).bindPopup(e.latlng.toString()+
+//                                                         "<br>"+dtCurrentTime.toString());
+//            
+//            });
+            
+//            mymap.on('keypress', function(e){
+//               if (e.originalEvent.key=="l"){
+//                   mymap.locate();
+//               } 
+//            });
+            
+            mymap.on('locationfound', function(e){
+               console.log(e);
+                if (markCurrent){
+                    markCurrent.remove();
+                }
+                markCurrent = L.circle(e.latlng,{radius:e.accuracy/2}).addTo(mymap);
+                mymap.setView(e.latlng,14);
+            });
+            
+            mymap.on("locationerror", function(e){
+                console.log(e);
+                alert("Location was not found!");
+            });
+            
+//            mymap.on('zoomend', function() {
+//               $('#zoom-level').html(mymap.getZoom());
+//            });
+            
+//            mymap.on('moveend', function() {
+//               $('#map-center').html(LatLngToArrayString(mymap.getCenter())); 
+//            });
+            
+//            mymap.on('mousemove', function(e) {
+//               $('#mouse-location').html(LatLngToArrayString(e.latlng)); 
+//            });
+            
+//            function LatLngToArrayString(ll) {
+//                console.log(ll)
+//              return "["+ll.lat.toFixed(5)+", "+ll.lng.toFixed(5)+"]";  
+//            }
+            
+            $('#btn-locate').click(function() {
+               mymap.locate(); 
+            });
+            
+            $('#btn-zotoKrt').click(function() {
+               mymap.setView([15.5007, 32.5599], 17);
+                mymap.openPopup(popKRT);
+            });
+            
+//            $('#sldOpacity').on('change', function(){
+//                $('#image-opacity').html(this.value);
+//                lyrKRT.setOpacity(this.value);
+//            });
+            
+//            mrkJA.on('dragend', function(){
+//               mrkJA.setTooltipContent("Current Loacation: "+mrkJA.getLatLng().toString()+
+//                                      '<br>'+"Distance to Jabel Awlyia: "+
+//                                      mrkJA.getLatLng().distanceTo([15.23616, 32.50786]).toFixed(0)/1000 +"km"); 
+//            });
+            
+//            $('#btn-zotoJA').click(function(){
+//               mymap.setView([15.23616, 32.50786],17);
+//                mrkJA.setLatLng([15.23616, 32.50786]);
+//                mrkJA.setTooltipContent("Jabel Awlyia");
+//            });
+            
+//            $('#btn-rout').click(function(){
+//               mymap.fitBounds(pln.getBounds()); 
+//            });
+            
+//            $('#btn-addJA').click(function() {
+//                if (fgpKRT.hasLayer(mrkJA)){
+//                    fgpKRT.removeLayer(mrkJA);
+//                    $('#btn-addJA').html("Add JA to Fgroup");
+//                }
+//                else {
+//                  fgpKRT.addLayer(mrkJA); 
+//                    $('#btn-addJA').html("Remove JA from Fgroup");
+//                }
+//               
+//            });
+            
+//            $('#btn-changeColor').click(function(){
+//               fgpKRT.setStyle({color:"blue", fillColor:"green",fillOpacity:'0.8'}); 
+//            });
+        });
+        
+        function returnEagleMarker(json,latlng){
+            var att = json.properties;
+//            if (att.status=='ACTIVE NEST'){
+//                var clrNests = 'deeppink';
+//                var wgtNest = 7;
+//                var opcNest =1;
+//                var dshNest = '';
+//            } else {
+//                var clrNests = 'green';
+//                var wgtNest = 7;
+//                var opcNest = 1;
+//                var dshNest = '2,8'; weight:wgtNest, opacity:opcNest, fillColor:clrNests, fillOpacity:0.5, dashArray:dshNest
+//            }
+//            return L.circle(latlng, {radius:804, color:clrNests, fillColor:'green',fillOpacity:0.5}).bindTooltip(
+//            "<h4>Eagle Nest: "+att.nest_id+"</h4>Status: "+att.status);
+            
+            if (att.status == 'ACTIVE NEST'){
+                var IconEagle = icnEagleActive;
+            } else {
+                var IconEagle = icnEagleInactive;
+            }
+            return L.marker(latlng, {icon:IconEagle}).bindTooltip("<h4>Eagle Nest: "+att.nest_id+"</h4>Status: "+att.status);
+        };
+        
+        function returnRaptorMarker(json,latlng){
+            var att = json.properties;
+            switch (att.recentspecies){
+                case 'Red-tail Hawk':
+                    var radRaptor =533;
+                    break;
+                case 'Swainsons Hawk':
+                    var radRaptor = 400;
+                    break;
+                default:
+                    var radRaptor = 804;
+                    break;
+            }
+            
+            switch (att.recentstatus){
+                case 'ACTIVE NEST':
+                   var optRaptor = {radius:radRaptor,color:'deeppink',fillColor:"blue",fillOpacity:0.5};
+                    break;
+                case 'INACTIVE NEST':
+                     var optRaptor = {radius:radRaptor,color:'blue',fillColor:"blue",fillOpacity:0.5};
+                     break;
+                    
+                case 'FLEDGED NEST':
+                     var optRaptor = {radius:radRaptor,color:'deeppink',fillColor:"blue",fillOpacity:0.5, dashArray:'2,8'};
+                     break;
+                    
+                
+            }
+            
+            return L.circle(latlng, optRaptor).bindPopup('<h4>Raptor Nest: '+att.Nest_ID+'</h4>Status: '+att.recentstatus+'<br>Species: '+att.recentspecies+'<br> Last survey: '+att.lastsurvey)
+     
+        };
+        
+        function filterEagleNests(json){
+            var att = json.properties;
+            if (att.status == 'ACTIVE NEST'){
+                return true;
+            } else {
+                return false;
+            }
+            
+        };
+        
+        function styleClientLinears(json){
+            var att = json.properties;
+            switch (att.type){
+                case 'Pipeline':
+                    return {color:'peru'};
+                    break;
+                    
+                case 'Flowline':
+                    return {color:'navy'};
+                    break;
+                    
+                case 'Flowline, est.':
+                    return {color:'navy',dashArray:'5,5'};
+                    break;
+                    
+                case 'Electric Line':
+                    return {color:'darkgreen'};
+                    break;
+                    
+                case 'Access Road - Confirmed':
+                    return {color:'darkred'};
+                    break;
+                    
+                case 'Access Road - Estimated':
+                    return {color:'darkred', dashArray:'5,5'};
+                    break;
+                case 'Extraction':
+                    return {color:'indigo'};
+                    break;
+                    
+                default:
+                    return {color:'darkgoldenrod'}
+                    break;
+            }
+        };
+        
+        
+        function processClientLinears(json,lyr){
+            var att = json.properties;
+            lyr.bindTooltip('<h4>Linear Project: '+att.Project+'</h4>Type: '+att.type+'<br>Row Width: '+att.row_width);
+        };
+        
+        function styleBUOWL(json){
+            var att = json.properties;
+            switch(att.hist_occup){
+                case 'Yes':
+                    return {color:'deeppink',fillColor:'yellow'};
+                    break;
+                case 'undetermined':
+                    return {color:'yellow'};
+                    break;
+            }
+        };
+                          
+        function processBUOWL(json,lyr){
+            var att = json.properties;
+            lyr.bindTooltip('<h4>Habitat ID: '+att.habitat_id+'</h4>Historically Occuopied: '+att.hist_occup+"<br>Status: "+att.recentstatus);
+        };
+        
+        function filterBUOWL(json){
+            var att = json.properties;
+            if (att.recentstatus == 'REMOVED'){
+                return false;
+            } else {
+                return true;
+            }
+        };
+        
+    </script>
+    
+</body>
+</html>
